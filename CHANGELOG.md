@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+- Settings page (Options → AddOns → Forever Hide Names): choose whether chat bubbles and damage numbers are hidden together with the names. Both are on by default.
+- `/names bubbles`, `/names damage` and `/names options`.
+- Changing a setting while everything is hidden applies right away.
+
 ## 0.1.0
 
 - First version.

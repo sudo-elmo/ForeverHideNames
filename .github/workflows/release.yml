@@ -16,7 +16,9 @@ jobs:
       - name: Install Lua 5.1
         run: sudo apt-get update && sudo apt-get install -y lua5.1
       - name: Syntax check
-        run: for f in *.lua; do luac5.1 -p "$f" || exit 1; done
+        run: for f in *.lua tests/*.lua; do luac5.1 -p "$f" || exit 1; done
+      - name: Behaviour test (simulated WoW API)
+        run: lua5.1 tests/core_test.lua Core.lua
 
   release:
     needs: lint

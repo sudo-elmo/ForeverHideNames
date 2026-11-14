@@ -2,7 +2,7 @@
 
 Hide **everything** over the heads when you hide the interface – for **World of Warcraft: Forever**.
 
-The default "hide interface" key (**Alt+Z**) hides your action bars and windows, but names, nameplates and chat bubbles stay in the world. With this addon they disappear together with the interface, and come back exactly as they were when you press Alt+Z again. Perfect for screenshots and videos.
+The default "hide interface" key (**Alt+Z**) hides your action bars and windows, but names, nameplates, chat bubbles and damage numbers stay in the world. With this addon they disappear together with the interface, and come back exactly as they were when you press Alt+Z again. Perfect for screenshots and videos.
 
 ---
 
@@ -10,8 +10,8 @@ The default "hide interface" key (**Alt+Z**) hides your action bars and windows,
 
 - All names over heads: your own, players, NPCs, pets, guardians, totems, minions – plus guild names and titles
 - All nameplates (enemy, friendly, NPC and the personal one)
-- Chat bubbles
-- Damage numbers over targets
+- Chat bubbles *(can be turned off)*
+- Damage numbers over targets *(can be turned off)*
 
 ## How it works
 
@@ -26,7 +26,21 @@ The default "hide interface" key (**Alt+Z**) hides your action bars and windows,
 | Command | |
 |---|---|
 | `/names` or `/namen` | Hide or show all names by hand, without hiding the interface |
+| `/names bubbles` | Also hide chat bubbles: on/off |
+| `/names damage` | Also hide damage numbers: on/off |
+| `/names options` | Open the settings |
 | `/names help` | Short help |
+
+## Settings
+
+Options → AddOns → Forever Hide Names, or `/names options`:
+
+| Setting | Default | |
+|---|---|---|
+| Chat bubbles | on | Hide the chat bubbles together with the names |
+| Damage numbers | on | Hide the damage numbers over your targets together with the names |
+
+Names and nameplates are always hidden. A change applies right away, even while everything is hidden.
 
 ## Install
 
