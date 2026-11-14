@@ -1,0 +1,42 @@
+name: Release
+
+# Runs when a version tag like v1.0.0 is pushed: builds the addon zip and
+# attaches it to a GitHub release. GitHub only - no CurseForge, Wago or
+# WoWInterface upload (no API keys are passed to the packager).
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install Lua 5.1
+        run: sudo apt-get update && sudo apt-get install -y lua5.1
+      - name: Syntax check
+        run: for f in *.lua; do luac5.1 -p "$f" || exit 1; done
+
+  release:
+    needs: lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: BigWigsMods/packager@v2
+
+      # The packager posts the whole CHANGELOG.md; the release only gets this version's section.
+      - name: Trim release notes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          awk -v v="${GITHUB_REF_NAME#v}" '/^## /{f = ($2 == v); next} f' CHANGELOG.md | sed '/./,$!d' > notes.md
+          test -s notes.md || { echo "No CHANGELOG.md section for ${GITHUB_REF_NAME#v}"; exit 1; }
+          gh release edit "$GITHUB_REF_NAME" --notes-file notes.md

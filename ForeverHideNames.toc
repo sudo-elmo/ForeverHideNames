@@ -3,7 +3,8 @@
 ## Notes: Hides every name, nameplate and chat bubble together with the interface (Alt+Z) and brings them back afterwards.
 ## Notes-deDE: Blendet mit der Oberfläche (Alt+Z) alle Namen, Namensplaketten und Sprechblasen aus und holt sie danach zurück.
 ## Author: sudo-elmo
-## Version: 0.1.0
+## Version: @project-version@
+## X-License: MIT
 ## SavedVariables: ForeverHideNamesDB
 ## AllowLoadGameType: camelot
 
